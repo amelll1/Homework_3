@@ -10,9 +10,6 @@ import test.MediaProduct.Genre;
 
 public class StockManagerSingleton {
 	List<MediaProduct> mediaproducts = new ArrayList<MediaProduct>();
-	List<VinylRecordProduct> vinylrecords = new ArrayList<VinylRecordProduct>();
-	List<CDRecordProduct> cdrecords = new ArrayList<CDRecordProduct>();
-	List<TapeRecordProduct> taperecords = new ArrayList<TapeRecordProduct>();
 	private String inventoryFilePath;
 	public StockManagerSingleton(String filePath) {
 		inventoryFilePath = filePath;
@@ -35,18 +32,19 @@ public class StockManagerSingleton {
 				double price = Double.valueOf(arrData[2]);
 				int year = Integer.valueOf(arrData[3]);
 				Genre genre = Genre.valueOf(arrData[4]);
-				MediaProduct media = new MediaProduct(name,price,year,genre);
 				if (type.equals("Vinyl")) {
 					VinylRecordProduct typeMedia = new VinylRecordProduct(name,price,year,genre);
-					vinylrecords.add(typeMedia);
+					mediaproducts.add(typeMedia);
 				} else if (type.equals("CD")) {
 					CDRecordProduct typeMedia = new CDRecordProduct(name,price,year,genre);
-					cdrecords.add(typeMedia);
+					mediaproducts.add(typeMedia);
 				} else if (type.equals("Tape")) {
 					TapeRecordProduct typeMedia = new TapeRecordProduct(name,price,year,genre);
-					taperecords.add(typeMedia);
+					mediaproducts.add(typeMedia);
+				} else {
+					MediaProduct media = new MediaProduct(name,price,year,genre);
+					mediaproducts.add(media);
 				}
-				mediaproducts.add(media);
 			}
 			stockManagerData.close();
 			sc.close();
