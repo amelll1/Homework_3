@@ -30,7 +30,7 @@ public class StockManagerSingleton {
 //					System.out.println(" - "+ a);
 //				}
 //				System.out.println("SPACE");
-				String type = arrData[0]; // not yet used
+				String type = arrData[0];
 				String name = arrData[1];
 				double price = Double.valueOf(arrData[2]);
 				int year = Integer.valueOf(arrData[3]);
@@ -42,12 +42,11 @@ public class StockManagerSingleton {
 				} else if (type.equals("CD")) {
 					CDRecordProduct typeMedia = new CDRecordProduct(name,price,year,genre);
 					cdrecords.add(typeMedia);
-				} else if (type.equals("CD")) { // tape
+				} else if (type.equals("Tape")) {
 					TapeRecordProduct typeMedia = new TapeRecordProduct(name,price,year,genre);
 					taperecords.add(typeMedia);
 				}
 				mediaproducts.add(media);
-//				System.out.println(media.toString());
 			}
 			stockManagerData.close();
 			sc.close();
