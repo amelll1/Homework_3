@@ -56,10 +56,20 @@ public class StockManagerSingleton {
 		}
 	}
 	public boolean updateItemPrice(MediaProduct product, double newPrice) {
-		return true;
+		product.setPrice(newPrice);
+		if (product.getPrice() == newPrice) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	public boolean addItem(MediaProduct product) {
-		return true;
+		mediaproducts.add(product);
+		if (mediaproducts.contains(product)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	public boolean removeItem(MediaProduct product) {
 		if(MediaProduct.contains(product)) {
