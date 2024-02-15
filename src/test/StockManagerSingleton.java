@@ -62,7 +62,11 @@ public class StockManagerSingleton {
 		return true;
 	}
 	public boolean removeItem(MediaProduct product) {
-		return true;
+		if(MediaProduct.contains(product)) {
+			MediaProduct.remove(product);
+			return true;
+		}
+		return false;
 	}
 	public boolean saveStock() {
 		return true;
