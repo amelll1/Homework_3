@@ -1,7 +1,5 @@
 package test;
 
-import javax.print.attribute.standard.Media;
-
 public class MediaProduct {
     private String title;
     private double price;
