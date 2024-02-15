@@ -42,7 +42,7 @@ public class StockManagerSingleton {
 				} else if (type.equals("CD")) {
 					CDRecordProduct typeMedia = new CDRecordProduct(name,price,year,genre);
 					cdrecords.add(typeMedia);
-				} else { // tape
+				} else if (type.equals("CD")) { // tape
 					TapeRecordProduct typeMedia = new TapeRecordProduct(name,price,year,genre);
 					taperecords.add(typeMedia);
 				}
