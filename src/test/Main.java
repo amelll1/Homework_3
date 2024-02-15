@@ -4,6 +4,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Test");
+		StockManagerSingleton joe = new StockManagerSingleton("files/inventory.csv");
+		joe.intializeStock();
 	}
 
 }
