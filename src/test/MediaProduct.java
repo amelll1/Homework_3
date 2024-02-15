@@ -52,4 +52,7 @@ public class MediaProduct {
 		this.genre = genre;
 	}
 	
+	public String toString() {
+		return ("Title: "+title+" Price: "+price+" Year: "+year+" Genre: "+genre);
+	}
 }
