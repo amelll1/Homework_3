@@ -1,6 +1,7 @@
 package test;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,9 +84,9 @@ public class StockManagerSingleton {
 		{
 			writer.write("Type,Name,Price,Year,Genre\n"); //writing the first line
 		for (MediaProduct product : mediaproducts){
-			writer.write(String.format("%s,%s,%.2f,%d,%s\n"
-				product.getClass().getSimpleName(), // Get the class name
-				product.getName(),
+			writer.write(String.format("%s,%s,%.2f,%d,%s\n",
+				product.getClass().toString(), //.getSimpleName(), // Get the class name
+				product.getTitle(),
 				product.getPrice(),
 				product.getYear(),
 				product.getGenre().toString()));
@@ -93,11 +94,12 @@ public class StockManagerSingleton {
 		return true;
 	}  catch (IOException e) {
         return false;
-    }
+	}
+	}
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
-		ArrayList<MediaProduct> productsBelowPrice;
-		for(MediaProduct product: productList){
-			if (product.price < maxPrice){
+		ArrayList<MediaProduct> productsBelowPrice = new ArrayList<MediaProduct>();
+		for(MediaProduct product: mediaproducts){
+			if (product.getPrice() < maxPrice){
 				productsBelowPrice.add(product);
 			}
 		}
@@ -127,4 +129,4 @@ public class StockManagerSingleton {
 //	
 //}
 }
-}
+
