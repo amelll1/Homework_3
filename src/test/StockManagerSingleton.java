@@ -125,8 +125,12 @@ public class StockManagerSingleton {
 		.map(product -> (CDRecordProduct) product)
 		.collect(Collectors.toCollection(ArrayList::new));
 }
-//	public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList){
-//	
-//}
+	public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList){
+		List<TapeRecordProduct> tapeList = productList.stream()
+				.filter(product -> product instanceof TapeRecordProduct)
+				.map(product -> (TapeRecordProduct) product)
+				.collect(Collectors.toList());
+				return new ArrayList<>(tapeList);
+}
 }
 
