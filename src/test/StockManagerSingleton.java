@@ -72,8 +72,8 @@ public class StockManagerSingleton {
 		}
 	}
 	public boolean removeItem(MediaProduct product) {
-		if(MediaProduct.contains(product)) {
-			MediaProduct.remove(product);
+		if(mediaproducts.contains(product)) {
+			mediaproducts.remove(product);
 			return true;
 		}
 		return false;
@@ -81,9 +81,15 @@ public class StockManagerSingleton {
 	public boolean saveStock() {
 		return true;
 	}
-//	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
-//		
-//	}
+	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
+		ArrayList<MediaProduct> productsBelowPrice;
+		for(int i = 0; i < mediaproducts.size(); i++){
+			if (mediaproducts[i].price < maxPrice){
+				productsBelowPrice.add(mediaproducts[i]);
+			}
+		}
+		return productsBelowPrice;
+	}
 	public void printListOfMediaProduct(ArrayList<MediaProduct> productList) {
 		
 	}
