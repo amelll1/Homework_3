@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Scanner;
-
 import test.MediaProduct.Genre;
 
 public class StockManagerSingleton {
@@ -80,14 +79,24 @@ public class StockManagerSingleton {
 		return false;
 	}
 	public boolean saveStock() {
-		
+		try (FileWriter writer = new FileWriter (inventoryFilePath))
+		{
+			writer.write("Type,Name,Price,Year,Genre\n"); //writing the first line
+		for (MediaProduct product : mediaproducts){
+			writer.write(String.format("%s,%s,%.2f,%d,%s\n"
+				product.getClass().getSimpleName(), // Get the class name
+				product.getName(),
+				product.getPrice(),
+				product.getYear(),
+				product.getGenre().toString()));
+		}
 		return true;
-	}
+	} return false;
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
 		ArrayList<MediaProduct> productsBelowPrice;
-		for(int i = 0; i < mediaproducts.size(); i++){
-			if (mediaproducts[i].price < maxPrice){
-				productsBelowPrice.add(mediaproducts[i]);
+		for(MediaProduct product: productList){
+			if (product.price < maxPrice){
+				productsBelowPrice.add(product);
 			}
 		}
 		return productsBelowPrice;
@@ -115,4 +124,5 @@ public class StockManagerSingleton {
 //	public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList){
 //	
 //}
+}
 }
