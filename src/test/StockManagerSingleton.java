@@ -91,7 +91,9 @@ public class StockManagerSingleton {
 				product.getGenre().toString()));
 		}
 		return true;
-	} return false;
+	}  catch (IOException e) {
+        return false;
+    }
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
 		ArrayList<MediaProduct> productsBelowPrice;
 		for(MediaProduct product: productList){
