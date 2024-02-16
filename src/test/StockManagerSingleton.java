@@ -80,6 +80,7 @@ public class StockManagerSingleton {
 		return false;
 	}
 	public boolean saveStock() {
+		
 		return true;
 	}
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
