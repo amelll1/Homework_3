@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.Scanner;
 
 import test.MediaProduct.Genre;
@@ -91,14 +92,25 @@ public class StockManagerSingleton {
 		return productsBelowPrice;
 	}
 	public void printListOfMediaProduct(ArrayList<MediaProduct> productList) {
+		for(MediaProduct product: productList) {
+			System.out.println(product.toString());
+		}
 		
 	}
-//	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList){
-//		
-//	}
-//	public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList){
-//	
-//}
+	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList) {
+		List<VinylRecordProduct> vinylList = productList.stream()
+		.filter(product -> product instanceof VinylRecordProduct)
+		.map(product -> (VinylRecordProduct) product)
+		.collect(Collectors.toList());
+		return new ArrayList<>(vinylList);
+		
+}
+	public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList){
+		return productList.stream()
+		.filter(product -> product instanceof CDRecordProduct)
+		.map(product -> (CDRecordProduct) product)
+		.collect(Collectors.toCollection(ArrayList::new));
+}
 //	public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList){
 //	
 //}
